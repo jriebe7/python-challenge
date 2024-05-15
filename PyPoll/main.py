@@ -12,9 +12,11 @@ with open(csvpath) as csvfile:
     
     header = next(csvreader)
 
+    # create lists to break up votes and candidates
     votes = []
     candidate = []
 
+    # Calculate Data and set variables
     for row in csvreader:
         votes.append(row[0])
         candidate.append(row[2])
@@ -31,7 +33,8 @@ with open(csvpath) as csvfile:
     first = [i for i in vote_count.keys() if vote_count[i] == max_votes]
     last =  [i for i in vote_count.keys() if vote_count[i] == min_votes]
     second =  [i for i in vote_count.keys() if vote_count[i] != max_votes and vote_count[i] != min_votes]
-   
+    
+    #Print results
     print("Total votes: " + str(total_votes))
     print("Winner: " + first[0] + " with " + str(max_votes) + " votes (" + str(percentage_max) + "%)")
     print("2nd place: " + second[0] + " with " + str(second_votes) + " votes (" + str(percentage_second) + "%)")
@@ -39,9 +42,9 @@ with open(csvpath) as csvfile:
     
     output_path = os.path.join("Analysis", "Election_Results.csv")
 
+    # Write and export to CSV
     with open(output_path, 'w', newline="") as csvfile:
 
-    # Initialize csv.writer
         csvwriter = csv.writer(csvfile, delimiter=',')
 
         csvwriter.writerow(["Election Results"])

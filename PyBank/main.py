@@ -1,7 +1,6 @@
 # Import os and csv
 import os
 import csv
-from datetime import datetime
 
 # set file path to open
 csvpath = os.path.join("Resources", "budget_data.csv")
@@ -82,7 +81,8 @@ with open(csvpath) as csvfile:
     
     print("Greatest Decrease in Profits: $" + str(min_change) + " " + "(" + minmonth_change + ")")
         
-    
+    # Write and export data to CSV
+       
     output_path = os.path.join("Analysis", "Financial_Analysis.csv")
 
     with open(output_path, 'w', newline="") as csvfile:
